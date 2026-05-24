@@ -24,7 +24,7 @@ class SensorFusionDemo(Scene):
         car = self.make_car()
         car.move_to(road.n2p(10) + UP * 0.45)
         car_label = Text("last known x = 10.0 m", font_size=22, color=YELLOW)
-        car_label.next_to(car, UP, buff=0.25)
+        car_label.next_to(car, UP, buff=0.25).shift(LEFT * 0.8)
 
         wall = VGroup(
             Rectangle(width=0.18, height=1.1, color=TEAL, fill_opacity=0.7),
@@ -186,7 +186,7 @@ class SensorFusionDemo(Scene):
 
     def sensor_card(self, name, value, weight, color):
         box = RoundedRectangle(
-            width=2.45,
+            width=3.2,
             height=0.54,
             corner_radius=0.08,
             color=color,
@@ -197,6 +197,6 @@ class SensorFusionDemo(Scene):
         label = Text(name, font_size=18, color=color)
         reading = Text(value, font_size=18, color=WHITE)
         trust = Text(weight, font_size=18, color=YELLOW)
-        row = VGroup(label, reading, trust).arrange(RIGHT, buff=0.28)
+        row = VGroup(label, reading, trust).arrange(RIGHT, buff=0.4)
         row.move_to(box)
         return VGroup(box, row)
