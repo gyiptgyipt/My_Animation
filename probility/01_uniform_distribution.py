@@ -60,12 +60,12 @@ class UniformDistribution(Scene):
         # 0. TITLE
         # =====================================================
         title = mm_text(
-            'Uniform Distribution: "ငါ ဘာမှမသိဘူး" အဆင့် — 8×8 Grid Map',
-            size=36,
+            ' I know nothing step - Uniform Distribution: "8×8 Grid Map',
+            size=26,
             color=HIGHLIGHT,
             weight=BOLD,
         )
-        title.to_edge(UP, buff=0.5)
+        title.to_edge(UP, buff=0.25)
 
         self.play(Write(title))
         self.wait(0.5)
@@ -139,9 +139,9 @@ class UniformDistribution(Scene):
         # =====================================================
         # 3. VO CAPTION: robot asks about its (x, y) position
         # =====================================================
-        vo1 = mm_text('"ငါ ဘယ် (x, y) position မှာ ရှိနေလဲ"', size=28, color=HIGHLIGHT)
-        vo1.to_edge(DOWN, buff=1.3)
-        bubble = SurroundingRectangle(vo1, color=HIGHLIGHT, buff=0.25, corner_radius=0.15)
+        vo1 = mm_text('"What is my (x, y) position?"', size=28, color=HIGHLIGHT)
+        vo1.to_edge(DOWN, buff=0.25)
+        bubble = SurroundingRectangle(vo1, color=HIGHLIGHT, buff=0.22, corner_radius=0.15)
 
         coord_tag = mm_text("(x=?, y=?)", size=20, color=HIGHLIGHT)
         coord_tag.next_to(robot, RIGHT, buff=0.2)
@@ -165,15 +165,15 @@ class UniformDistribution(Scene):
             FadeIn(prob_label, scale=1.2),
             run_time=1.4,
         )
-        self.wait(0.3)
+        self.wait(0.5)
 
         vo2 = mm_text(
-            "ဘာသတင်းအချက်အလက်မှ မရှိသေးလို့ … ကွက် 64 ကွက်လုံး ဖြစ်နိုင်ခြေ 1/64 စီပဲ",
-            size=25, color=VO_COLOR,
+            "Because we have no information about the robot's location, all 64 cells are equally likely.",
+            size=15, color=VO_COLOR,
         )
-        vo2.to_edge(DOWN, buff=0.55)
+        vo2.to_edge(DOWN, buff=0.95)
         self.play(FadeIn(vo2, shift=UP * 0.2))
-        self.wait(1.6)
+        self.wait(2.6)
         self.play(FadeOut(vo2), FadeOut(prob_label))
 
         # =====================================================
@@ -257,18 +257,18 @@ class UniformDistribution(Scene):
         # 6. FINAL EXPLANATION
         # =====================================================
         chart_title = mm_text(
-            "ဘားအားလုံး အမြင့်ချင်းတူ = ဖြစ်နိုင်ခြေအားလုံး ညီတူညီမျှ = Uniform Distribution",
+            "same height bars = all probabilities are equal = Uniform Distribution",
             size=27, color=HIGHLIGHT, weight=BOLD,
         )
-        chart_title.to_edge(UP, buff=0.6)
+        chart_title.to_edge(UP, buff=0.25)
         self.play(Write(chart_title))
         self.wait(0.5)
 
         closing = mm_text(
-            '"ငါ ဘာမှမသိသေးဘူး" — ဒါက ကျွန်တော်တို့ရဲ့ ပထမဆုံး ဖြစ်တန်စွမ်း ခြေလှမ်းပါ',
+            '"This is our prior belief: all 64 cells are equally likely."',
             size=25, color=VO_COLOR,
         )
-        closing.to_edge(DOWN, buff=0.5)
+        closing.to_edge(DOWN, buff=0.25)
         self.play(FadeIn(closing, shift=UP * 0.2))
         self.wait(2.5)
 
@@ -277,7 +277,7 @@ class UniformDistribution(Scene):
 
     # ---------------------------------------------------------------
     def make_robot(self, eyes_closed=False):
-        """A very simple, cute box-robot made of manim shapes."""
+        """"""
         head = RoundedRectangle(
             corner_radius=0.15, width=1.4, height=1.1,
             fill_color=ROBOT_BODY, fill_opacity=1, stroke_color=WHITE, stroke_width=2,
